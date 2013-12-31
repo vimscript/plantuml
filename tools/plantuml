@@ -1,8 +1,9 @@
 #!/bin/bash
 JAVAEXE=$(type -path java)
+GRAPHVIZ_DOT=$(type -path dot)
 plantuml_jar_file=$(cd $(dirname $0 ) >/dev/null 2>/dev/null; pwd)/plantuml.jar
 [ -x ${JAVAEXE} -a -f ${plantuml_jar_file} ] && {
-    java -jar $HOME/lib/java/plantuml.jar -tsvg $@
+    $JAVAEXE -jar $plantuml_jar_file -tsvg $@
     :
 } || {
     echo "java is not installed or plantuml.jar file not exits"
